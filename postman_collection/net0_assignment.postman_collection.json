@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "36a526a2-7558-47e2-8265-ba01972c666b",
+		"name": "net0_assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1099652"
+	},
+	"item": [
+		{
+			"name": "Add a Table",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"tableName\"  : \"restaurant1_table2\",\n \"numberOfSeats\": 2,\n \"tableArea\": \"outdoor\",\n \"isAvailable\": false,\n \"restaurantId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/tables/addTable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"tables",
+						"addTable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Table by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/tables/getTableById?tableId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"tables",
+						"getTableById"
+					],
+					"query": [
+						{
+							"key": "tableId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Table",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"id\": 1,   \n \"tableArea\": \"indoor\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/tables/updateTable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"tables",
+						"updateTable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All tables",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"tableName\"  : \"restaurant1_table4\",\n \"numberOfSeats\": 2,\n \"tableArea\": \"outdoor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/tables/listAllTables",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"tables",
+						"listAllTables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Table",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"tableName\"  : \"restaurant1_table4\",\n \"numberOfSeats\": 2,\n \"tableArea\": \"outdoor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurants/tables/deleteTable?tableId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurants",
+						"tables",
+						"deleteTable"
+					],
+					"query": [
+						{
+							"key": "tableId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
