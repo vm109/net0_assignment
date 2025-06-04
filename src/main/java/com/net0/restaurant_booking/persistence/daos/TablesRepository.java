@@ -10,6 +10,4 @@ import java.util.List;
 @Repository
 public interface TablesRepository extends JpaRepository<Tables, Long> {
     Tables getTablesById(Long id);
-    @Query("SELECT t FROM Tables t where t.restaurants.restaurantId = ?1")
-    List<Tables> findByRestaurantsId(Long restaurantId);
 }
