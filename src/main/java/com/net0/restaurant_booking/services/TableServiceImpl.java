@@ -1,7 +1,6 @@
 package com.net0.restaurant_booking.services;
 
 import com.net0.restaurant_booking.dtos.Table;
-import com.net0.restaurant_booking.persistence.daos.RestaurantsRepository;
 import com.net0.restaurant_booking.persistence.models.Tables;
 import io.micrometer.common.util.StringUtils;
 import jakarta.annotation.Resource;
@@ -15,9 +14,6 @@ import java.util.Objects;
 public class TableServiceImpl implements TablesService {
     @Resource
     private TablesRepository tablesRepository;
-
-    @Resource
-    private RestaurantsRepository restaurantsRepository;
 
     @Override
     public Table getTableById(Long id) {
@@ -57,7 +53,6 @@ public class TableServiceImpl implements TablesService {
         tables.settableArea(table.gettableArea());
         tables.setCapacity(table.getNumberOfSeats());
         tables.setName(table.getTableName());
-        tables.setRestaurants(restaurantsRepository.findById(table.getRestaurantId()).get());
         try {
             tablesRepository.save(tables);
         } catch (Exception e) {
@@ -117,27 +112,5 @@ public class TableServiceImpl implements TablesService {
         } catch (Exception e) {
             throw new RuntimeException("Error occurred while deleting table: " + e.getMessage());
         }
-    }
-
-    @Override
-    public List<Table> getTablesByRestaurantId(Long restaurantId) throws RuntimeException {
-        if (restaurantId <= 0) {
-            throw new RuntimeException("Restaurant ID should be greater than 0");
-        }
-
-        List<Tables> tablesList = tablesRepository.findByRestaurantsId(restaurantId);
-        if (tablesList.isEmpty()) {
-            return List.of(new Table("No tables found for the given restaurant ID"));
-        }
-
-        return tablesList.stream().map(tables -> {
-            Table table = new Table();
-            table.setId(tables.getId());
-            table.setisAvailable(tables.isAvailable());
-            table.settableArea(tables.gettableArea());
-            table.setNumberOfSeats(tables.getCapacity());
-            table.setTableName(tables.getName());
-            return table;
-        }).toList();
     }
 }

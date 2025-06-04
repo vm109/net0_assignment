@@ -11,6 +11,4 @@ public interface TablesService {
     void addTable(Table table) throws RuntimeException;
     Table updateTable(Table table) throws RuntimeException;
     void deleteTable(Long id) throws RuntimeException;
-
-    List<Table> getTablesByRestaurantId(Long restaurantId) throws RuntimeException;
 }
